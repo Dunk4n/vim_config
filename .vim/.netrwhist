@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/niduches/test'
+let g:netrw_dirhist_8='/Users/niduches/test/vim-templates/plugin'
+let g:netrw_dirhist_7='/Users/niduches/test/vim-templates'
+let g:netrw_dirhist_6='/Users/niduches/test'
+let g:netrw_dirhist_5='/usr/share/vim'
+let g:netrw_dirhist_4='/usr/share/vim/vim74/plugin'
+let g:netrw_dirhist_3='/usr/share/vim/vim74'
+let g:netrw_dirhist_2='/usr/share/vim'
+let g:netrw_dirhist_1='/usr/share/vim/vim73/plugin'
+let g:netrw_dirhist_0='/usr/share/vim/vim73'
