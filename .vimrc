@@ -1,11 +1,10 @@
+let $MYPWD =expand('<sfile>:p:h')
+
 "command:
 command Getsrc read !find src -name "*.c" | sed  's/$/		\\/g'
 
 "script
-source ~/.vim/script/template.vim
-
-"template
-autocmd BufNewFile *.hpp 0r ~/.vim/templates/hpp.template
+source $MYPWD/script/template.vim
 
 syntax on
 set smartindent
@@ -38,5 +37,7 @@ autocmd BufNewfile *.hpp :Stdheader
 autocmd BufNewfile *.cpp :Stdheader
 autocmd BufNewfile *.c :Stdheader
 autocmd BufNewfile *.h :Stdheader
+"template
+autocmd BufNewFile *.hpp 0r $MYPWD/templates/hpp.template
 "expand template
 autocmd BufNewfile *.hpp :TemplateExpand
