@@ -4,7 +4,8 @@ let $MYPWD =expand('<sfile>:p:h')
 command Getsrc read !find src -name "*.c" | sed  's/$/		\\/g'
 
 "script
-source $MYPWD/script/template.vim
+source $MYPWD/script/placeholders.vim
+source $MYPWD/script/header.vim
 
 syntax on
 set smartindent
