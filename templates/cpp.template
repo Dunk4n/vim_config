@@ -1,0 +1,21 @@
+#include "{{FILE}}.hpp"
+
+{{CLASS}}::{{CLASS}}(void)
+{
+}
+
+{{CLASS}}::{{CLASS}}({{CURSOR}})
+{
+}
+
+{{CLASS}}::{{CLASS}}(const {{CLASS}} &copy)
+{
+}
+
+{{CLASS}}::~{{CLASS}}(void)
+{
+}
+
+void	operator=(const {{CLASS}} &copy)
+{
+}

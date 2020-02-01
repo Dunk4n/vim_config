@@ -31,6 +31,7 @@ function <SID>MoveCursor()
         let l:lineno = line('.')
         let l:colno = col('.')
 		s/{{CURSOR}}//
+		startinsert
 		call cursor(l:lineno, l:colno)
 		return 1
 	endif
@@ -38,6 +39,7 @@ function <SID>MoveCursor()
 endfunction
 
 function <SID>TemplateExpand()
+	normal mm
 	call <SID>ExpandMacroTemplate()
 	call <SID>ExpandTemplate('FILE', expand('%:t:r'))
 	call <SID>ExpandTemplate('CLASS', expand('%:t:r'))
@@ -45,6 +47,8 @@ function <SID>TemplateExpand()
 	call <SID>ExpandTemplate('FILEF', @%)
 	call <SID>ExpandTemplate('FILER', expand('%:p'))
 
+	execute ':$d'
+	normal `m
 	let l:cursor_found = <SID>MoveCursor()
 
 	if !l:cursor_found

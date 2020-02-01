@@ -4,8 +4,14 @@
 class {{CLASS}}
 {
 	public:
+		{{CLASS}}(void);
 		{{CLASS}}({{CURSOR}});
+		{{CLASS}}(const {{CLASS}} &copy);
 		virtual ~{{CLASS}}();
+		~{{CLASS}}(void);
+
+		void	operator=(const {{CLASS}} &copy);
+
 	private:
 };
 
