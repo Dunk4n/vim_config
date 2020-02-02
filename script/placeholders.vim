@@ -40,6 +40,11 @@ endfunction
 
 function <SID>TemplateExpand()
 	normal mm
+	if exists("*g:FunctionForHeader")
+		call <SID>ExpandTemplate('HEADER', g:FunctionForHeader())
+	else
+		call <SID>ExpandTemplate('HEADER', '')
+	endif
 	call <SID>ExpandMacroTemplate()
 	call <SID>ExpandTemplate('FILE', expand('%:t:r'))
 	call <SID>ExpandTemplate('CLASS', expand('%:t:r'))
@@ -52,7 +57,6 @@ function <SID>TemplateExpand()
 	let l:cursor_found = <SID>MoveCursor()
 
 	if !l:cursor_found
-	"return to old cursor position
 		normal `m
 	endif
 endfunction

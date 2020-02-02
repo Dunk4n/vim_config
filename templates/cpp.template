@@ -1,3 +1,5 @@
+{{HEADER}}
+
 #include "{{FILE}}.hpp"
 
 {{CLASS}}::{{CLASS}}(void)

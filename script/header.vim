@@ -58,14 +58,8 @@ function! s:InputFileDescription()
 	" call inputsave() to prompt user for input
 	" call inputrestore() to finish user prompt
 
-	call inputsave()
-	let file_description = input('Enter file description (or press ENTER to put a random text): ')
-	call inputrestore()
-	" if the length of the input is null
-	if strlen(file_description) == 0
-		let currentSecond = strftime('%S') / 2
-		let file_description = s:quotes[currentSecond]
-	endif
+	let currentSecond = strftime('%S') / 2
+	let file_description = s:quotes[currentSecond]
 	return file_description
 endfunction
 
@@ -76,7 +70,7 @@ function! s:GetCurrentYear()
 endfunction
 
 " function to insert the epitech header
-function <SID>AddTekHeader()
+function AddTekHeader()
 	" if checkFiletype() fails, return error
 	if !s:CheckFiletype()
 		echoerr "Unsupported filetype for Epitech header: " . &filetype
@@ -87,15 +81,13 @@ function <SID>AddTekHeader()
 	let l:com2 = s:comStyles[&filetype]['2']
 	let l:com3 = s:comStyles[&filetype]['3']
 
-	let l:let = append(0, l:com1)
-	let l:let = append(1, l:com2 . " EPITECH PROJECT, " . s:GetCurrentYear())
-	let l:let = append(2, l:com2 . " " . expand('%:r'))
-	let l:let = append(3, l:com2 . " File description:")
-	let l:let = append(4, l:com2 . " " . s:InputFileDescription())
-	let l:let = append(5, l:com3)
-	let l:let = append(6, "")
-	:8
+	let l:let = l:com1 .'\r'. l:com2 . " EPITECH PROJECT, " . s:GetCurrentYear() .'\r'. l:com2 . " " . expand('%:r') .'\r'. l:com2 . " File description:" .'\r'. l:com2 . " " . s:InputFileDescription() .'\r'. l:com3
+	return l:let
 endfunction
 
-command	-nargs=0 AddTekHeader	:call <SID>AddTekHeader()
-command	-nargs=0 Add42Header	:call <SID>Add42Header()
+function Add42Header()
+	return '/* 42 */'
+endfunction
+
+command	-nargs=0 AddTekHeader	:call AddTekHeader()
+command	-nargs=0 Add42Header	:call Add42Header()

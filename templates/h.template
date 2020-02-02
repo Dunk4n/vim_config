@@ -1,3 +1,5 @@
+{{HEADER}}
+
 #ifndef {{MACRO_GUARD}}
 # define {{MACRO_GUARD}}
 

@@ -1,3 +1,5 @@
+{{HEADER}}
+
 #include "{{FILE}}.h"
 
 {{CURSOR}}
