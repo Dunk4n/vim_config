@@ -96,6 +96,7 @@ function Poui()
 		return l:file
 	endif
 	put =l:file
+	exec ':TemplateExpandSnippet'
 	call cursor(l:lineno + l:i, l:colno + l:ret)
 	return ''
 endfunction

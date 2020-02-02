@@ -38,8 +38,7 @@ function <SID>MoveCursor()
 	return 0
 endfunction
 
-function <SID>TemplateExpand()
-	normal mm
+function <SID>TemplateExpandSnippet()
 	if exists("*g:FunctionForHeader")
 		call <SID>ExpandTemplate('HEADER', g:FunctionForHeader())
 	else
@@ -51,6 +50,11 @@ function <SID>TemplateExpand()
 	call <SID>ExpandTemplate('FILEE', expand('%:t'))
 	call <SID>ExpandTemplate('FILEF', @%)
 	call <SID>ExpandTemplate('FILER', expand('%:p'))
+endfunction
+
+function <SID>TemplateExpand()
+	normal mm
+	call <SID>TemplateExpandSnippet()
 
 	execute ':$d'
 	normal `m
@@ -61,4 +65,5 @@ function <SID>TemplateExpand()
 	endif
 endfunction
 
-command	-nargs=0 TemplateExpand		:call <SID>TemplateExpand()
+command	-nargs=0 TemplateExpandSnippet	:call <SID>TemplateExpandSnippet()
+command	-nargs=0 TemplateExpand			:call <SID>TemplateExpand()
