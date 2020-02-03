@@ -17,14 +17,6 @@ function <SID>PrepareMacro(str)
 	return toupper(tr(a:str, '/.-', '___'))
 endfunction
 
-function <SID>ExpandMacroTemplate()
-	let	l:macro_guard = <SID>PrepareMacro(expand('%:t'))
-	let	l:macro_guard_full = <SID>PrepareMacro(@%)
-
-	call <SID>ExpandTemplate('MACRO_GUARD', l:macro_guard)
-	call <SID>ExpandTemplate('MACRO_GUARD_FULL', l:macro_guard_full)
-endfunction
-
 function <SID>MoveCursor()
 	normal gg
     if (search('{{CURSOR}}', 'W'))
@@ -44,7 +36,11 @@ function <SID>TemplateExpandSnippet()
 	else
 		call <SID>ExpandTemplate('HEADER', '')
 	endif
-	call <SID>ExpandMacroTemplate()
+	let	l:macro_guard = <SID>PrepareMacro(expand('%:t'))
+	let	l:macro_guard_full = <SID>PrepareMacro(@%)
+
+	call <SID>ExpandTemplate('MACRO_GUARD', l:macro_guard)
+	call <SID>ExpandTemplate('MACRO_GUARD_FULL', l:macro_guard_full)
 	call <SID>ExpandTemplate('FILE', expand('%:t:r'))
 	call <SID>ExpandTemplate('CLASS', expand('%:t:r'))
 	call <SID>ExpandTemplate('FILEE', expand('%:t'))
@@ -67,3 +63,22 @@ endfunction
 
 command	-nargs=0 TemplateExpandSnippet	:call <SID>TemplateExpandSnippet()
 command	-nargs=0 TemplateExpand			:call <SID>TemplateExpand()
+
+function <SID>ExpandTemplateString(str, tmpl, value)
+	return substitute(a:str, '{{'. a:tmpl .'}}', a:value, 'g')
+endfunction
+
+function TemplateExpandSnippetString(str)
+	let	l:macro_guard = <SID>PrepareMacro(expand('%:t'))
+	let	l:macro_guard_full = <SID>PrepareMacro(@%)
+	let l:new = a:str
+
+	let l:new = <SID>ExpandTemplateString(l:new, 'MACRO_GUARD', l:macro_guard)
+	let l:new = <SID>ExpandTemplateString(l:new, 'MACRO_GUARD_FULL', l:macro_guard_full)
+	let l:new = <SID>ExpandTemplateString(l:new, 'FILE', expand('%:t:r'))
+	let l:new = <SID>ExpandTemplateString(l:new, 'CLASS', expand('%:t:r'))
+	let l:new = <SID>ExpandTemplateString(l:new, 'FILEE', expand('%:t'))
+	let l:new = <SID>ExpandTemplateString(l:new, 'FILEF', @%)
+	let l:new = <SID>ExpandTemplateString(l:new, 'FILER', expand('%:p'))
+	return l:new
+endfunction

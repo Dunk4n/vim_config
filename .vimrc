@@ -27,6 +27,7 @@ command Getsrc read !find src -name "*.c" | sed  's/$/		\\/g'
 "script
 source $MYPWD/script/placeholders.vim
 source $MYPWD/script/function.vim
+source $MYPWD/script/snippets.vim
 
 set smartindent
 set ruler
@@ -51,6 +52,9 @@ set backupdir^=~/.saves,/tmp
 set viminfo='20,<500
 cnoreabbrev W w
 cnoreabbrev Wq wq
+cnoreabbrev WQ wq
+cnoreabbrev Q q
+cnoreabbrev Q! q!
 au BufNewFile,BufRead *.s set filetype=nasm
 
 "add header
@@ -76,29 +80,3 @@ autocmd BufNewfile *.hpp :TemplateExpand
 autocmd BufNewfile *.cpp :TemplateExpand
 autocmd BufNewfile *.h :TemplateExpand
 autocmd BufNewfile *.c :TemplateExpand
-"nnoremap ,oui :-1read $MYPWD/oui.oui<cr>j3l
-"
-function Poui()
-	let l:lineno = line('.')
-	let l:colno = col('.')
-	let l:file = readfile($MYPWD.'/oui.oui')
-	let l:i = 0
-	let l:ret = -1
-	while l:i < len(l:file) && l:ret == -1
-		let l:ret = stridx(l:file[l:i], '{{CURSOR}}')
-		if l:ret != -1
-			let l:file[l:i] = substitute(l:file[l:i], '{{CURSOR}}', '', '')
-		endif
-		let l:i += 1
-	endwhile
-	let l:file = join(l:file, "\n")
-	if l:ret == -1
-		return l:file
-	endif
-	put =l:file
-	exec ':TemplateExpandSnippet'
-	call cursor(l:lineno + l:i, l:colno + l:ret)
-	return ''
-endfunction
-
-iabbrev non <C-R>=Poui()<CR>
