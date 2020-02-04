@@ -6,7 +6,7 @@
 "    By: zaz <zaz@staff.42.fr>                      +#+  +:+       +#+         "
 "                                                 +#+#+#+#+#+   +#+            "
 "    Created: 2013/06/15 12:45:56 by zaz               #+#    #+#              "
-"    Updated: 2020/02/04 15:15:32 by niduches         ###   ########.fr        "
+"    Updated: 2020/02/04 16:20:03 by niduches         ###   ########.fr        "
 "                                                                              "
 " **************************************************************************** "
 
@@ -162,6 +162,23 @@ function s:filetype ()
 	endfor
 endfunction
 
+function s:insert ()
+	call s:filetype ()
+
+	call append(0, "")
+	call append (0, s:bigline())
+	call append (0, s:emptyline())
+	call append (0, s:updateline())
+	call append (0, s:createline())
+	call append (0, s:logo3())
+	call append (0, s:coderline())
+	call append (0, s:logo2())
+	call append (0, s:fileline())
+	call append (0, s:logo1())
+	call append (0, s:emptyline())
+	call append (0, s:bigline())
+endfunction
+
 function Insert42Header ()
 	call s:filetype ()
 
@@ -193,4 +210,8 @@ function s:update ()
 	endif
 endfunction
 
+if exists('Stdheader')
+	command Stdheader call s:insert ()
+	nmap <F1> :Stdheader<CR>
+endif
 autocmd BufWritePre * call s:update ()
