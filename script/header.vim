@@ -93,4 +93,3 @@ function AddTekHeader()
 endfunction
 
 command	-nargs=0 AddTekHeader	:call AddTekHeader()
-command	-nargs=0 Add42Header	:call Add42Header()
