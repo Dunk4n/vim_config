@@ -51,3 +51,4 @@ iabbrev IFEL <C-R>=PutSnippet($MYPWD.'/snippets/ifel.snippet')<CR>
 iabbrev IFELE <C-R>=PutSnippet($MYPWD.'/snippets/ifele.snippet')<CR>
 iabbrev WHILE <C-R>=PutSnippet($MYPWD.'/snippets/while.snippet')<CR>
 iabbrev FOR <C-R>=PutSnippet($MYPWD.'/snippets/for.snippet')<CR>
+iabbrev COUT <C-R>=PutSnippet($MYPWD.'/snippets/cout.snippet')<CR>
