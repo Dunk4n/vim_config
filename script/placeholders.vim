@@ -32,9 +32,14 @@ endfunction
 
 function <SID>TemplateExpandSnippet()
 	if exists("*g:FunctionForHeader")
-		call <SID>ExpandTemplate('HEADER', g:FunctionForHeader())
+		let l:header = g:FunctionForHeader()
+		if l:header != ''
+			call <SID>ExpandTemplate('HEADER', g:FunctionForHeader())
+		else
+			silent! execute '%s/{{HEADER}}//gI'
+		endif
 	else
-		call <SID>ExpandTemplate('HEADER', '')
+		silent! execute '%s/{{HEADER}}//gI'
 	endif
 	let	l:macro_guard = <SID>PrepareMacro(expand('%:t'))
 	let	l:macro_guard_full = <SID>PrepareMacro(@%)

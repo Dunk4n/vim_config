@@ -81,12 +81,15 @@ function AddTekHeader()
 	let l:com2 = s:comStyles[&filetype]['2']
 	let l:com3 = s:comStyles[&filetype]['3']
 
-	let l:let = l:com1 .'\r'. l:com2 . " EPITECH PROJECT, " . s:GetCurrentYear() .'\r'. l:com2 . " " . expand('%:r') .'\r'. l:com2 . " File description:" .'\r'. l:com2 . " " . s:InputFileDescription() .'\r'. l:com3
+	let l:let = l:com1 .'\r'.
+	\l:com2 . " EPITECH PROJECT, " .
+	\s:GetCurrentYear() .'\r'.
+	\l:com2 . " " .
+	\expand('%:r') .'\r'.
+	\l:com2 . " File description:" .'\r'.
+	\l:com2 . " " . s:InputFileDescription() .'\r'.
+	\l:com3
 	return l:let
-endfunction
-
-function Add42Header()
-	return '/* 42 */'
 endfunction
 
 command	-nargs=0 AddTekHeader	:call AddTekHeader()

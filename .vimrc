@@ -19,7 +19,6 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 "see :help key-notation
 source $MYPWD/script/header.vim
 let g:KeyToComplementaryFile = '<TAB>'
-let g:FunctionForHeader = function("Add42Header")
 
 "command:
 command Getsrc read !find src -name "*.c" | sed  's/$/		\\/g'
@@ -28,6 +27,8 @@ command Getsrc read !find src -name "*.c" | sed  's/$/		\\/g'
 source $MYPWD/script/placeholders.vim
 source $MYPWD/script/function.vim
 source $MYPWD/script/snippets.vim
+source $MYPWD/script/stdheader.vim
+let g:FunctionForHeader = function("Insert42Header")
 
 set smartindent
 set ruler
