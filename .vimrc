@@ -58,11 +58,6 @@ cnoreabbrev Q q
 cnoreabbrev Q! q!
 au BufNewFile,BufRead *.s set filetype=nasm
 
-"add header
-"autocmd BufNewfile *.hpp :Stdheader
-"autocmd BufNewfile *.cpp :Stdheader
-"autocmd BufNewfile *.c :Stdheader
-"autocmd BufNewfile *.h :Stdheader
 "template
 if expand('%:t') == 'main.cpp'
 	autocmd BufNewFile main.cpp 0r $MYPWD/templates/main.cpp.template

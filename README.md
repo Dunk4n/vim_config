@@ -39,3 +39,17 @@ Insert42Header was originally created by 42
 Put the placeholders in `{{placeholders_name}}` and for expand all placeholders use `:TemplateExpand`
 
 check ([vim-templates](https://github.com/tibabit/vim-templates)) for more details
+
+## Snippet
+
+The Following snippets are currently supported
+
+- `IF` : just an if
+- `IFE` : if and else
+- `IFEL` : if, else if
+- `IFELE` : if, else if and else
+- `for` : just a for
+- `while` : just a while
+- `MAIN` : main with argc and argv
+- `MAINE` : main with argc, argv and env
+- `COUT` : std::cout <<  << std::endl;
