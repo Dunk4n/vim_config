@@ -48,8 +48,8 @@ The Following snippets are currently supported
 - `IFE` : if and else
 - `IFEL` : if, else if
 - `IFELE` : if, else if and else
-- `for` : just a for
-- `while` : just a while
+- `FOR` : just a for
+- `WHILE` : just a while
 - `MAIN` : main with argc and argv
 - `MAINE` : main with argc, argv and env
 - `COUT` : std::cout <<  << std::endl;
