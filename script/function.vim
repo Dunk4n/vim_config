@@ -2,7 +2,19 @@
 function <SID>GetComplementaryFile()
 	let l:extention = expand('%:e')
 
-	if l:extention == 'hpp'
+	if l:extention == ''
+		let l:filename = expand('%:r') . '.'
+		if filereadable(l:filename.'hpp')
+			execute "e ".l:filename.'hpp'
+		elseif filereadable(l:filename.'h')
+			execute "e ".l:filename.'h'
+		elseif filereadable(l:filename.'cpp')
+			execute "e ".l:filename.'cpp'
+		elseif filereadable(l:filename.'c')
+			execute "e ".l:filename.'c'
+		endif
+		return
+	elseif l:extention == 'hpp'
 		let l:newExtention = 'cpp'
 	elseif l:extention == 'h'
 		let l:newExtention = 'c'
@@ -14,7 +26,9 @@ function <SID>GetComplementaryFile()
 		return
 	endif
 	let l:filename = expand('%:r') . '.' . l:newExtention
-	execute "e ".l:filename
+	if filereadable(l:filename)
+		execute "e ".l:filename
+	endif
 endfunction
 
 command	-nargs=0 ToComplementaryFile	:call <SID>GetComplementaryFile()
