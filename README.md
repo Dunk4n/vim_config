@@ -29,7 +29,9 @@ The Following placeholders are currently supported
 - `CLASS` : class name, same as `FILE`
 - `CURSOR` : This is a spacial placeholder, it does not expand into anything but the cursor is placed at this location after the template expansion
 - `HEADER` : use function stored in g:FunctionForHeader, you can use 42 or EPITECH header with Insert42Header and AddTekHeader
+
 AddTekHeader was originally created by [x4m3](https://github.com/x4m3)
+
 Insert42Header was originally created by 42
 
 ### Use Placeholders
