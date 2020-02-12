@@ -9,10 +9,9 @@ class {{CLASS}}
 		{{CLASS}}(void);
 		{{CLASS}}({{CURSOR}});
 		{{CLASS}}(const {{CLASS}} &copy);
-		virtual ~{{CLASS}}();
-		~{{CLASS}}(void);
+		virtual ~{{CLASS}}(void);
 
-		void	operator=(const {{CLASS}} &copy);
+		{{CLASS}}	&operator=(const {{CLASS}} &copy);
 
 	private:
 };

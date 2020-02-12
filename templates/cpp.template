@@ -18,6 +18,7 @@
 {
 }
 
-void	operator=(const {{CLASS}} &copy)
+{{CLASS}}	&{{CLASS}}::operator=(const {{CLASS}} &copy)
 {
+	return (*this);
 }
